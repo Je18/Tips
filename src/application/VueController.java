@@ -123,7 +123,7 @@ public class VueController {
 
 	public void writeInFile(String date) {
         File file = new File("C:\\Users\\Eleve\\eclipse-workspace\\Tips\\src\\application\\saveInfo.txt");
-        boolean dateFound = false;
+        boolean dateExist = false;
 
         try {
             if (!file.exists()) {
@@ -135,12 +135,12 @@ public class VueController {
             for (int i = 0; i < lines.size(); i++) {
                 if (lines.get(i).startsWith(date.toString())) {
                     lines.set(i, date + " ;" + billText.getText() + " ;" + tipsText.getText() + " ;" + nbText.getText());
-                    dateFound = true;
+                    dateExist = true;
                     break;
                 }
             }
 
-            if (!dateFound) {
+            if (!dateExist) {
             	lines.add(date + " ;" + billText.getText() + " ;" + tipsText.getText() + " ;" + nbText.getText());
             }
 
@@ -149,7 +149,6 @@ public class VueController {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("An error occurred.");
             e.printStackTrace();
         }
 	}
